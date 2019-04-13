@@ -1,22 +1,30 @@
 void setup() {
-  size(600, 400);
+  size(800, 400);
 }
 
-// https://en.wikipedia.org/wiki/Flag_of_Vietnam
+// https://en.wikipedia.org/wiki/Flag_of_Panama
 void draw() {
   background(255, 255, 255);
-  // blue rectangle
+  // blue rectangle 01
   noStroke();
-  fill(0, 0, 255);
-  rect(0, 0, 200, 200);
-  // red rectangle
+  fill(0, 0, 128);
+  rect(0, 0, 800, 80);
+  // blue rectangle 02
   noStroke();
-  fill(255, 0, 0);
-  rect(0, 200, 600, 200);
-  // start
+  fill(0, 0, 128);
+  rect(0, 160, 800, 80);
+  // blue rectangle 03
+  noStroke();
+  fill(0, 0, 128);
+  rect(0, 320, 800, 80);
+  // red triangle
+  noStroke();
+  fill(200, 16, 46);
+  triangle(0, 0, 0, 400, 340, 200);
+  // white start
   noStroke();
   fill(255, 255, 255);
-  star(100, 100, 50, 19, 5, -126);
+  star(113, 200, 60, 23, 5, -126);
 }
 
 //------------------------------------------------------------------//
@@ -31,7 +39,7 @@ void star(int x, int y, float CircumscribedCircle, float InscribedCircle, int p,
   int cnt = p * 2;
   float radius = 0;
 
-  // http://www.d-improvement.jp/learning/processing/2011-a/08.html
+  // https://en.wikipedia.org/wiki/Flag_of_Cuba
   pushMatrix();
   translate(x, y);
   rotate(radians(rotatete));

@@ -1,22 +1,38 @@
 void setup() {
-  size(600, 400);
+  size(720, 360);
 }
 
-// https://en.wikipedia.org/wiki/Flag_of_Vietnam
+// https://en.wikipedia.org/wiki/Flag_of_Panama
 void draw() {
   background(255, 255, 255);
-  // blue rectangle
+  // blue rectangle 01
   noStroke();
-  fill(0, 0, 255);
-  rect(0, 0, 200, 200);
-  // red rectangle
+  fill(0,102,204);
+  rect(0, 0, 720, 120);
+  // blue rectangle 02
   noStroke();
-  fill(255, 0, 0);
-  rect(0, 200, 600, 200);
-  // start
+  fill(0,102,204);
+  rect(0, 240, 720, 120);
+  // blue start 01
   noStroke();
-  fill(255, 255, 255);
-  star(100, 100, 50, 19, 5, -126);
+  fill(0,102,204);
+  star(240, 150, 20, 8, 5, -126);
+  // blue start 02
+  noStroke();
+  fill(0,102,204);
+  star(240, 210, 20, 8, 5, -126);
+  // blue start 03
+  noStroke();
+  fill(0,102,204);
+  star(360, 180, 20, 8, 5, -126);
+  // blue start 04
+  noStroke();
+  fill(0,102,204);
+  star(480, 150, 20, 8, 5, -126);
+  // blue start 05
+  noStroke();
+  fill(0,102,204);
+  star(480, 210, 20, 8, 5, -126);
 }
 
 //------------------------------------------------------------------//
