@@ -1,5 +1,5 @@
 void setup() {
-  size(100, 100);
+  size(200, 100);
   background(255, 255, 255);
 }
 
@@ -8,7 +8,7 @@ void draw() {
   int y = 50;
   noStroke();
   fill(0,51,153);
-  for(int x = 10; x <= 90; x+=20){
+  for(int x = 10; x <= 190; x+=20){
     ellipse(x,y,20,20);
   }
 }

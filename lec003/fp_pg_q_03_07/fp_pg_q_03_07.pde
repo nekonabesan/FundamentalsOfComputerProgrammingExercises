@@ -9,7 +9,7 @@ void draw() {
   int x = 25;
   noStroke();
   fill(0,51,153);
-  for(int y = 10; y <= (10 + (40 * 4)); y+=40){
+  for(int y = 10; y <= (height -10); y+=40){
     rect(x, y, 50, 20);
   }
 }
