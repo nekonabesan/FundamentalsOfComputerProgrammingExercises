@@ -5,7 +5,7 @@ void setup() {
   background(0, 75, 135);
 }
 
-void flagOfIsland(float width, float height){
+void flagOfIsland(){
   int x = 0;
   int y = 0;
   //===== white line 01 =====//
@@ -37,5 +37,5 @@ void flagOfIsland(float width, float height){
 
 // 図 2.12 の仕様に示したアイスランド共和国国旗を算術演算子を用いて描画せよ．
 void draw() {
-  flagOfIsland(500, 360);
+  flagOfIsland();
 }

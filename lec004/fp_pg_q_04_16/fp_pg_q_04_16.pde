@@ -6,7 +6,7 @@ void setup() {
   background(225, 16, 52);
 }
 
-void flagOfBahrayn(float width, float height) {
+void flagOfBahrayn() {
   float triangle_height = height / 5;
   // ===== White rect 01 ===== //
   noStroke();
@@ -22,5 +22,5 @@ void flagOfBahrayn(float width, float height) {
 
 // 問題 3.16 図 2.13 の仕様に示したバーレーン王国国旗を算術演算子を用いて描画せよ．
 void draw() {
-  flagOfBahrayn(600, 360);
+  flagOfBahrayn();
 }

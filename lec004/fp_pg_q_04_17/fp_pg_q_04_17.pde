@@ -6,10 +6,10 @@ void setup() {
 
 // https://en.wikipedia.org/wiki/Flag_of_Vietnam
 void draw() {
-  FlagofVietnam(600, 400);
+  FlagofVietnam();
 }
 
-void FlagofVietnam(float width, float height){
+void FlagofVietnam(){
   noStroke();
   fill(255, 255, 0);
   star(width/2, height/2, (width / 5), (width / 13), 5, -126);

@@ -7,7 +7,7 @@ void draw() {
   background(218, 37, 29);
   noStroke();
   fill(255, 255, 0);
-  star(width/2, height/2, (width / 5), (width / 13), 5, -126);
+  star(600/2, 400/2, (600/5), (600/13), 5, -126);
 }
 
 //------------------------------------------------------------------//
@@ -18,7 +18,7 @@ void draw() {
 // int ratio  denominator rate
 // int rotate Rotational correction rate
 //------------------------------------------------------------------//
-void star(int x, int y, float CircumscribedCircle, float InscribedCircle, int p, int rotatete) {
+void star(float x, float y, float CircumscribedCircle, float InscribedCircle, int p, int rotatete) {
   int cnt = p * 2;
   float radius = 0;
 

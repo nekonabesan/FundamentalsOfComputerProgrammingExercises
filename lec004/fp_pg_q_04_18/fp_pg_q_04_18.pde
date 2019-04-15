@@ -7,10 +7,10 @@ void setup() {
 
 // https://en.wikipedia.org/wiki/Flag_of_Panama
 void draw() {
-  flagOfHonduras(720, 360);
+  flagOfHonduras();
 }
 
-void flagOfHonduras(float width, float height){
+void flagOfHonduras(){
   float x = 0;
   float y = 0;
   // blue rectangle 01

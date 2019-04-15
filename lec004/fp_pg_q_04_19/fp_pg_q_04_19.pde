@@ -6,8 +6,6 @@ void setup() {
 }
 
 void draw() {
-  float height = 300;
-  float width = 300;
   noStroke();
   fill(0, 0, 255);
   star(width/2, height/2, 50, 30, 5, PI/2);

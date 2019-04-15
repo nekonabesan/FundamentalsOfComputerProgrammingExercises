@@ -5,7 +5,7 @@ void setup() {
   background(0, 51, 160);
 }
 
-void flagOfGreece(float width, float height){
+void flagOfGreece(){
   float x = 0;
   float y = 0;
   // white line 01 to 04
@@ -30,5 +30,5 @@ void flagOfGreece(float width, float height){
 
 // 問題 3.15 図 2.11 の仕様に示したギリシャ共和国国旗を算術演算子を用いて描画せよ．
 void draw() {
-  flagOfGreece(540, 360);
+  flagOfGreece();
 }
