@@ -6,12 +6,16 @@ void setup() {
 void draw() {
   background(255, 255, 255);
   // blue rectangle
+  // 0033a0
+  // https://encycolorpedia.jp/0033a0
   noStroke();
-  fill(0, 0, 255);
+  fill(0, 51, 106);
   rect(0, 0, 200, 200);
   // red rectangle
+  // https://encycolorpedia.jp/c81040
+  // #c81040
   noStroke();
-  fill(255, 0, 0);
+  fill(200, 16, 64);
   rect(0, 200, 600, 200);
   // start
   noStroke();
