@@ -1,5 +1,5 @@
 void setup() {
-  size(600, 400);
+  size(432, 288);
 }
 
 void draw() {
@@ -10,26 +10,22 @@ void draw() {
   // https://www.pantone.com/color-finder/Red-032-C
   noStroke();
   fill(239, 51, 64);
-  rect(0, 0, 600, 200);
+  rect(0, 0, 432, 144);
   // white circle 01
   noStroke();
   fill(255, 255, 255);
-  ellipse(120,100,140,140);
+  ellipse(96,72,116,116);
   // red cercle 01
   noStroke();
   fill(239, 51, 64);
-  ellipse(140,100,125,125);
-  // white start 01
-  // white start 02
-  // white start 03
-  // white start 04
-  // white start 05
+  ellipse(120,72,116,116);
+  // white start
   noStroke();
   fill(255, 255, 255);
   for (int i = 0; i < 5; i++){
-    x = (40 * cos(radians(360 * i/5) - PI/2)) + 140;
-    y = (40 * sin(radians(360 * i/5) - PI/2)) + 100;
-    star(x, y, 16, 6, 5, -126);
+    x = (29 * cos(radians(360 * i/5) - PI/2)) + 120;
+    y = (29 * sin(radians(360 * i/5) - PI/2)) + 72;
+    star(x, y, 12.8, (12.8 * 0.75)/2, 5, -126);
   }
 }
 
