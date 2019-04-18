@@ -1,5 +1,5 @@
 void setup() {
-  size(500, 360);
+  size(250, 180);
   // https://www.pantone.com/color-finder/287-C
   background(0, 75, 135);
 }
@@ -11,26 +11,26 @@ void draw() {
   //===== white line 01 =====//
   noStroke();
   fill(255, 255, 255);
-  y+=140;
-  rect(x, y, 500, 80);
+  y+=70;
+  rect(x, y, 250, 40);
   //===== white line 02 =====//
   noStroke();
   fill(255, 255, 255);
-  x+=140;
-  y-=140;
-  rect(x, y, 80, 360);
+  x+=70;
+  y-=70;
+  rect(x, y, 40, 180);
   //===== red line 01 =====//
   // https://www.pantone.com/color-finder/199-C
   noStroke();
   fill(213, 0, 50);
-  x-=140;
-  y+=160;
-  rect(x, y, 500, 40);
+  x-=70;
+  y+=80;
+  rect(x, y, 250, 20);
   //===== red line 01 =====//
   // https://www.pantone.com/color-finder/199-C
   noStroke();
   //fill(213, 0, 50);
-  x+=160;
-  y-=160;
-  rect(x, y, 40, 500);
+  x+=80;
+  y-=80;
+  rect(x, y, 20, 250);
 }
