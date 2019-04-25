@@ -9,11 +9,11 @@ void draw() {
   strokeWeight(1);
   stroke(153, 153, 153);
   noFill();
-  ellipse(150, 150, 100, 100);
+  ellipse(width/2, height/2, 100, 100);
   //
   noStroke();
   fill(0, 51, 153);
-  Polygon(150, 150, 49, 5, -PI/2);
+  Polygon(width/2, height/2, 49, 5, -PI/2);
 }
 
 //------------------------------------------------------------------//
