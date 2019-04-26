@@ -4,7 +4,8 @@ private float x = random(1, 400);
 private float y = random(1, 400);
 private float vx = 1;
 private float vy = 1;
-private float spd_rate = random(0.1, 1);
+private float rx = (vx * getSpeedRate());
+private float ry = (vy * getSpeedRate());
 private float d = 20;
 
 void setup(){
@@ -20,11 +21,16 @@ void draw(){
   noStroke();
   fill(0, 0, 255);
   ellipse(x, y, d, d);
-  x += (cos(radians(360 * (1/vx * spd_rate))));
-  y += (sin(radians(260 * (1/vy * spd_rate))));
-  if(x < 0 || x < 400 || y < 0 || 400 < y){
+  x += rx;
+  y += ry;
+  if(x < 0 || 400 < x || y < 0 || 400 < y){
+    rx = (vx * getSpeedRate());
+    ry = (vy * getSpeedRate());
     x = random(0, 400);
     y = random(0, 400);
-    spd_rate = random(1, 10);
   }
+}
+
+private float getSpeedRate(){
+  return random(1, 10);
 }
