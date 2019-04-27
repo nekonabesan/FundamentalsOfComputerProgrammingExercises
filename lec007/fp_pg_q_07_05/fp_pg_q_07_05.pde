@@ -26,53 +26,61 @@ void draw(){
   y += ry;
   if(x <= 0 || 380 <= x || y <= 0 || 380 <= y){
     v = sqrt(sq(rx) + sq(ry));
-    /*if(vx <= 0 && vy <= 0){
+    if(vx <= 0 && vy <= 0){
       //　↖
-      if(x <= 20 && y <= 20){
-        x = 0;
-        y = 0;
-      } else if (x <= 20 && 20 < y) {
-        x = 0;
-      } else if (20 < x && y <= 20) {
-        y = 0;
+      if(x <= 0 && y <= 0){
+        rx = v * cos(degrees(acos(rx/v) - 180));
+        ry = v * sin(degrees(asin(ry/v) - 180));
+      } else if (x <= 0 && 0 < y) {
+        rx = v * cos(degrees(acos(rx/v) - 90));
+        ry = v * sin(degrees(asin(ry/v) - 90));
+      } else if (0 < x && y <= 0) {
+        rx = v * cos(degrees(acos(rx/v) + 90));
+        ry = v * sin(degrees(asin(ry/v) + 90));
       }
     } else if(vx <= 0 && 0 < vy){
       // ↙
       if (x <= 0 && 0 < y) {
-        x = 0;
+        rx = v * cos(degrees(acos(rx/v) + 90));
+        ry = v * sin(degrees(asin(ry/v) + 90));
       } else if (0 < x && 380 <= y) {
-        y = height - d;
+        rx = v * cos(degrees(acos(rx/v) + 90));
+        ry = v * sin(degrees(asin(ry/v) + 90));
       } else if (x <= 0 && 380 <= y) {
-        x = 0;
-        y = height - d;
+        rx = v * cos(degrees(acos(rx/v) - 180));
+        ry = v * sin(degrees(asin(ry/v) - 180));
       }
     } else if(0 < vx && vy <= 0) {
       // ↗
-      if (0 <= x && y <= 0) {
-        y = d;
-      } else if (0 <= x && 380 <= y) {
-        y = height - d;
+      if (0 < x && y <= 0) {
+        rx = v * cos(degrees(acos(rx/v) + 90));
+        ry = v * sin(degrees(asin(ry/v) + 90));
+      } else if (380 <= x && 0 < y) {
+        rx = v * cos(degrees(acos(rx/v) - 90));
+        ry = v * sin(degrees(asin(ry/v) - 90));
       } else if (380 <= x && y <= 0) {
-        x = width - d;
-        y = 0;
+        rx = v * cos(degrees(acos(rx/v) + 180));
+        ry = v * sin(degrees(asin(ry/v) + 180));
       }
     } else if(0 < vx && 0 < vy) {
-      // ↘
+      //  ↘
       if (380 <= x && 0 < y) {
-        x = width - d;
+        rx = v * cos(degrees(acos(rx/v) + 90));
+        ry = v * sin(degrees(asin(ry/v) + 90));
       } else if (380 <= x && 380 <= y) {
-        x = width - d;
-        y = height - d;
-      } else if (x < 0 && 380 <= y) {
-        y = height - d;
+        rx = v * cos(degrees(acos(rx/v) + 180));
+        ry = v * sin(degrees(asin(ry/v) + 180));
+      } else if (0 < x && 380 <= y) {
+        rx = v * cos(degrees(acos(rx/v) + 90));
+        ry = v * sin(degrees(asin(ry/v) + 90));
       }
-    }*/
+    }
     //println(x);
     //println(y);
     //println(cos(180 - 90 - cos(acos(radians(rx/v)))));
     //println(sin(180 - 90 - sin(asin(radians(ry/v)))));
-    rx = v * cos(degrees(acos(rx/v)));
-    ry = v * sin(degrees(asin(ry/v)));
+    //rx = v * cos(degrees(acos(rx/v)));
+    //ry = v * sin(degrees(asin(ry/v)));
     println(degrees(acos(rx/v)));
     println(degrees(asin(ry/v)));
     //println("rx : " + rx);
