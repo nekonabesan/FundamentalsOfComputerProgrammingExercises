@@ -1,10 +1,9 @@
-// 問題 7.5 ボールがウインドウ内を壁に反射しながら上下に等速直線運動するアニメーションを作成せよ．
+// 問題 7.6 ボールがウインドウで壁に反射しながら 2 次元平面内で等速直線運動するアニメーションを作成せよ．
 private float x = 0;
 private float y = 0;
 private float vx = 1;
 private float vy = 1;
-//private float rx = (vx * getSpeedRate());
-private float rx = 0;
+private float rx = (vx * getSpeedRate());
 private float ry = (vy * getSpeedRate());
 private float d = 20;
 private boolean flg = true;
