@@ -6,7 +6,7 @@ void setup() {
 
 void draw(){
   noStroke();
-  fill(200, 255, 200);
+  fill(152, 251, 152);
   star(width/2, height/2, (width /2), (width / 3), 7, PI/2);
 }
 
