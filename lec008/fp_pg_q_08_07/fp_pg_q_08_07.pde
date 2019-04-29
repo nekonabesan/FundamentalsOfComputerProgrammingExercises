@@ -1,5 +1,6 @@
-// 問題 8.6 ウインドウ内を上下方向に等速直線運動をするボールのアニメーションを作成せよ．
-// ただし，底辺での反射は行わなわず，マウスポインタの x 座標値に応じて移動する矩形に衝突した場合のみボールが反射するようにせよ．
+//　問題 8.7 300 画素 ×400 画素のウインドウ上で，2 次元等速直線運動をするボールのアニメーションを作成せよ．
+// ただし，マウスボタンをクリックするとボールが動き出すようにすること．
+// また，底辺での反射は行わなわず，マウスポインタの x 座標値に応じて移動する 40×10 画素の矩形に衝突した場合のみボールが反射するようにせよ．
 import java.util.*;
 ReflectionCircle rc = null;
 MoveRectangle mr;
@@ -87,7 +88,7 @@ public ReflectionCircle createRc(){
   g = random(0, 255);
   b = random(0, 255);
   d = random(10, 50);
-  rc = new ReflectionCircle(0, y, 0, vy, r, g, b, width, height, d);
+  rc = new ReflectionCircle(x, y, vx, vy, r, g, b, width, height, d);
   rc.setMaxY((height/2) + d);
   return rc;
 }
