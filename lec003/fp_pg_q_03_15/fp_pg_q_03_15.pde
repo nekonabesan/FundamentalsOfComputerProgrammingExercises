@@ -1,5 +1,5 @@
 void setup() {
-  size(540, 360);
+  size(270, 180);
   // https://www.pantone.com/color-finder/286-C
   background(0, 51, 160);
 }
@@ -11,19 +11,19 @@ void draw() {
   // white line 01 to 04
   noStroke();
   fill(255, 255, 255);
-  for(y = 40; y <= 360; y+=80){
-    rect(x, y, 540, 40);
+  for(y = 20; y <= 180; y+=40){
+    rect(x, y, 270, 20);
   }
   // brue rectangle
   // https://www.pantone.com/color-finder/286-C
   noStroke();
   fill(0, 51, 160);
-  rect(0, 0, 200, 200);
+  rect(0, 0, 100, 100);
   // white cross
   noStroke();
   fill(255, 255, 255);
-  rect(0, 80, 200, 40);
+  rect(0, 40, 100, 20);
   noStroke();
   fill(255, 255, 255);
-  rect(80, 0, 40, 200);
+  rect(40, 0, 20, 100);
 }

@@ -1,8 +1,8 @@
 void setup() {
-  size(600, 400);
+  size(360, 240);
 }
 
-// https://en.wikipedia.org/wiki/Flag_of_Vietnam
+// https://en.wikipedia.org/wiki/Flag_of_Chile
 void draw() {
   background(255, 255, 255);
   // blue rectangle
@@ -10,17 +10,17 @@ void draw() {
   // https://encycolorpedia.jp/0033a0
   noStroke();
   fill(0, 51, 106);
-  rect(0, 0, 200, 200);
+  rect(0, 0, width/3, height/2);
   // red rectangle
   // https://encycolorpedia.jp/c81040
   // #c81040
   noStroke();
   fill(200, 16, 64);
-  rect(0, 200, 600, 200);
+  rect(0, height/2, width, height/2);
   // start
   noStroke();
   fill(255, 255, 255);
-  star(100, 100, 50, 19, 5, -126);
+  star(60, 60, 30, 11.5, 5, -126);
 }
 
 //------------------------------------------------------------------//
