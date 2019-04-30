@@ -1,13 +1,10 @@
-class ReflectionStar {
+class MoveCircle {
   private float x = 0;
   private float y = 0;
   private float vx = 0;
   private float vy = 0;
   private float rx = 0;
   private float ry = 0;
-  private float r;
-  private float g;
-  private float b;
   private float w = 0;
   private float h = 0;
   private float d = 20;
@@ -20,81 +17,12 @@ class ReflectionStar {
   private float maxY = 0;
   private float tmpRx = 0;
   private float tmpRy = 0;
-  private float CircumscribedCircle = 0;
-  private float InscribedCircle = 0;
-  private float p = 0;
-  private float rotate = PI/2;
-  private float rate = 0.75;
+  private float r = 0;
+  private float g = 0;
+  private float b = 0;
 
-  public float getX(){
-      return x;
-  }
-  public float getY(){
-      return y;
-  }
-  public void setR(float red){
-    r = red;
-  }
-  public float getR(){
-    return r;
-  }
-  public void setG(float green){
-    g = green;
-  }
-  public float getG(){
-    return g;
-  }
-  public void setB(float blue){
-    b = blue;
-  }
-  public float getB(){
-    return b;
-  }
-  public float getCircumscribedCircle(){
-    return CircumscribedCircle;
-  }
-  public float getInscribedCircle(){
-    return InscribedCircle;
-  }
-  public float getP(){
-    return p;
-  }
-  public void setRotate(float protate){
-    rotate = protate;
-  }
-  public float getRotate(){
-    return rotate;
-  }
 
-  public void setMinX(float pMinX){
-    minX = pMinX;
-  }
-  public float getMinX(){
-    return minX;
-  }
-  public void setMaxX(float pMaxX){
-    maxX = pMaxX;
-  }
-  public float getMaxX(){
-    return maxX;
-  }
-  public void setMinY(float pMinY){
-    minY = pMinY;
-  }
-  public float getMinY(){
-    return minY;
-  }
-  public void setMaxY(float pMaxY){
-    maxY = pMaxY;
-  }
-  public float getMaxY(){
-    return maxY;
-  }
-
-  ReflectionStar(float px, float py, float pvx, float pvy,
-    float red, float green, float blue, float pw, float ph,
-    float pd, float pCircumscribedCircle, float pInscribedCircle,
-    int pp, float protate, float prate){
+  MoveCircle(float px, float py, float pvx, float pvy, float red, float green, float blue, float pw, float ph, float pd){
     x = px;
     y = py;
     vx = pvx;
@@ -105,26 +33,16 @@ class ReflectionStar {
     w = pw;
     h = ph;
     d = pd;
-    CircumscribedCircle = pCircumscribedCircle;
-    InscribedCircle = pInscribedCircle;
-    p = pp;
-    rotate = protate;
-    rate = prate;
-    setup();
-  }
-
-
-  private void setup() {
-    minX = d;
-    maxX = w - d;
-    minY = d;
-    maxY = h - d;
-    y = h/2;
+    minX = -(w/2) + d/2;
+    maxX = (w/2) - d/2;
+    minY = -(h/2) + d/2;
+    maxY = (h/2) - d/2;
     rx = (vx * getSpeedRate());
     ry = (vy * getSpeedRate());
+    ellipseMode(CENTER);
   }
 
-  void move(){
+  public void move(){
     if(x <= minX || maxX <= x || y <= minY || maxY <= y){
       if(x <= minX){
         x = minX;
@@ -172,7 +90,13 @@ class ReflectionStar {
     y += ry;
   }
 
+  public void draw(){
+    noStroke();
+    fill(r, g, b);
+    ellipse(x, y, d, d);
+  }
+
   private float getSpeedRate(){
-    return random(4, 10);
+    return random(2, 5);
   }
 }
