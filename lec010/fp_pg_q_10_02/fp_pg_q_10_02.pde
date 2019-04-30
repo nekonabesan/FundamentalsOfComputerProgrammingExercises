@@ -1,5 +1,5 @@
-// 問題 10.1 ボールクラスを作成し，ボールクラスを継承した 5 角形クラス Pentagon を利用して 5 角形を描画せよ．
-private Pentagon pt = null;
+// 問題 10.2 ボールクラスを作成し，ボールクラスを継承した n 角形 nPolygon クラスを利用して 5 角形を描画せよ．
+private nPolygon np = null;
 private float btm = 0;
 
 void setup(){
@@ -24,6 +24,6 @@ void draw() {
   float d = 50;
   float cc = 50;
   float rotate = PI;
-  pt = new Pentagon(x, y, vx, vy, r, g, b, width, height, d, cc, 0, rotate, 0.75);
-  pt.draw();
+  np = new nPolygon(x, y, vx, vy, r, g, b, width, height, d, cc, 0, rotate, 0.75);
+  np.draw(5);
 }
