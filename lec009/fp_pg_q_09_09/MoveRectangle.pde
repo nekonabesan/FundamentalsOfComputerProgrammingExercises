@@ -1,4 +1,4 @@
-class MoveCircle {
+class MoveRectangle {
   private float x = 0;
   private float y = 0;
   private float vx = 0;
@@ -7,7 +7,8 @@ class MoveCircle {
   private float ry = 0;
   private float w = 0;
   private float h = 0;
-  private float d = 20;
+  private float rw = 20;
+  private float rh = 20;
   private boolean flg = true;
   private float v = 0;
   private float theta = 0;
@@ -33,18 +34,6 @@ class MoveCircle {
   public float getY(){
     return y;
   }
-  public void setVx(float rVx){
-    vx = rVx;
-  }
-  public float getVx(){
-    return vx;
-  }
-  public void setVy(float rVy){
-    vy = rVy;
-  }
-  public float getVy(){
-    return vy;
-  }
   public void setRx(float rRx){
     rx = rRx;
   }
@@ -57,38 +46,14 @@ class MoveCircle {
   public float getRy(){
     return ry;
   }
-  public void setMinX(float rMinX){
-    minX = rMinX;
-  }
   public float getMinX(){
     return minX;
-  }
-  public void setMaxX(float rMaxX){
-    maxX = rMaxX;
   }
   public float getMaxX(){
     return maxX;
   }
-  public void setMinY(float rMinY){
-    minY = rMinY;
-  }
-  public float getMinY(){
-    return minY;
-  }
-  public void setMaxY(float rMaxY){
-    maxY = rMaxY;
-  }
-  public float getMaxY(){
-    return maxY;
-  }
 
-  public void setRgb(float red, float green, float blue){
-    r = red;
-    g = green;
-    b = blue;
-  }
-
-  MoveCircle(float px, float py, float pvx, float pvy, float red, float green, float blue, float pw, float ph, float pd){
+  MoveRectangle(float px, float py, float pvx, float pvy, float red, float green, float blue, float pw, float ph, float prw, float prh){
     x = px;
     y = py;
     vx = pvx;
@@ -98,14 +63,14 @@ class MoveCircle {
     b = blue;
     w = pw;
     h = ph;
-    d = pd;
-    minX = -(w/2) + d/2;
-    maxX = (w/2) - d/2;
-    minY = -(h/2) + d/2;
-    maxY = (h/2) - d/2;
+    rw = prw;
+    rh = prh;
+    minX = -(w/2) + rw/2;
+    maxX = (w/2) - rw/2;
+    minY = -(h/2) + rh/2;
+    maxY = (h/2) - rh/2;
     rx = (vx * getSpeedRate());
     ry = (vy * getSpeedRate());
-    ellipseMode(CENTER);
   }
 
   private void move(){
@@ -159,7 +124,7 @@ class MoveCircle {
   private void draw(){
     noStroke();
     fill(r, g, b);
-    ellipse(x, y, d, d);
+    rect(x, y, rw, rh);
   }
 
   private float getSpeedRate(){

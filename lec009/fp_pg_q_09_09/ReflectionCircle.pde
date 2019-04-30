@@ -1,4 +1,5 @@
 class ReflectionCircle extends MoveCircle {
+
   ReflectionCircle(float px, float py, float pvx, float pvy, float red, float green, float blue, float pw, float ph, float pd){
     super(px, py, pvx, pvy, red, green, blue, pw, ph, pd);
   }
@@ -9,8 +10,6 @@ class ReflectionCircle extends MoveCircle {
       super.setVy(random(-2, 2));
       float rx = super.getVx() * super.getSpeedRate();
       float ry = super.getVy() * super.getSpeedRate();
-      println(rx);
-      println(ry);
       super.setRx(rx);
       super.setRy(ry);
     }

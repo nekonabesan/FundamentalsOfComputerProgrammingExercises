@@ -1,17 +1,6 @@
-//　問題 8.7 300 画素 ×400 画素のウインドウ上で，2 次元等速直線運動をするボールのアニメーションを作成せよ．
-// ただし，マウスボタンをクリックするとボールが動き出すようにすること．
-// また，底辺での反射は行わなわず，マウスポインタの x 座標値に応じて移動する 40×10 画素の矩形に衝突した場合のみボールが反射するようにせよ．
-import java.util.*;
+// 問題 9.9 問題 8.7 をボールおよびパッドを表す 2 つのクラスを用いて作成せよ．
 ReflectionCircle rc = null;
-MoveRectangle mr;
-private float x = 0;
-private float y = 0;
-private float vx = 0;
-private float vy = 0;
-private float r = 0;
-private float g = 0;
-private float b = 0;
-private float d = 20;
+MoveRectangle mr = null;
 private float btm = 0;
 private float prw = 40;
 private float prh = 10;
@@ -21,6 +10,7 @@ void setup(){
   smooth();
   background(255, 255, 255);
   rectMode(CENTER);
+  ellipseMode(CENTER);
   frameRate(30);
   btm = height/2 - 30;
   mr = new MoveRectangle(0, btm, 1, 0, 0, 0, 255, width, height, prw, prh);
@@ -32,7 +22,7 @@ void draw() {
   if(rc == null){
     rc = createRc();
   }
-  if(btm - 2 -d/2 <= rc.getY() && rc.getY() <= prh + btm) {
+  if(btm - 2 - rc.getD()/2 <= rc.getY() && rc.getY() <= prh + btm) {
     if(mr.getX() - prw/2 <= rc.getX() && rc.getX() <= mr.getX() + prw/2){
       reflection();
     }
@@ -79,14 +69,14 @@ public void reflection(){
 }
 
 public ReflectionCircle createRc(){
-  x = random(-width/2, width/2);
-  y = random(-height/2, 0);
-  vx = 0;
-  vy = 0;
-  r = random(0, 255);
-  g = random(0, 255);
-  b = random(0, 255);
-  d = random(10, 50);
+  float x = random(-width/2, width/2);
+  float y = random(-height/2, 0);
+  float vx = 0;
+  float vy = 0;
+  float r = random(0, 255);
+  float g = random(0, 255);
+  float b = random(0, 255);
+  float d = random(10, 50);
   rc = new ReflectionCircle(x, y, vx, vy, r, g, b, width, height, d);
   rc.setMaxY((height/2) + d);
   return rc;

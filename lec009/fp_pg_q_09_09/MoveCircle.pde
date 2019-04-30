@@ -57,6 +57,12 @@ class MoveCircle {
   public float getRy(){
     return ry;
   }
+  public void setD(float rD){
+    d = rD;
+  }
+  public float getD(){
+    return d;
+  }
   public void setMinX(float rMinX){
     minX = rMinX;
   }
@@ -105,7 +111,6 @@ class MoveCircle {
     maxY = (h/2) - d/2;
     rx = (vx * getSpeedRate());
     ry = (vy * getSpeedRate());
-    ellipseMode(CENTER);
   }
 
   private void move(){
