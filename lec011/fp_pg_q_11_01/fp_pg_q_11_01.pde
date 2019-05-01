@@ -13,7 +13,6 @@ public void setup(){
   this.s = this.str.length() - 1;
   this.b = this.str.length() - 1;
   this.drawText();
-
 }
 
 public void draw(){
