@@ -1,6 +1,6 @@
 // 問題 11.5 ボールとブロックの衝突判定を行いなさい．
 private Block[] blk = new Block[50];
-private Ball ball = null;
+private MoveCircle mc = null;
 private float[] hit = new float[2];
 float px = random(-50, 50);
 float py = random(-50, 50);
@@ -12,6 +12,7 @@ public void setup(){
   size(300, 500);
   rectMode(CENTER);
   ellipseMode(CENTER);
+  frameRate(30);
   translate(width/2, height/2);
   background(255, 255, 255);
   float x = 0 - width/2;
@@ -27,29 +28,28 @@ public void setup(){
       y += 20;
     }
   }
-  /*
-  Ball(float px, float py, float pvx, float pvy,
-    float red, float green, float blue, float pw, float ph,
-    float pd, float pCircumscribedCircle,
-    int pp, float protate, float prate){
-  */
-  this.ball = new Ball(px, py, pvx, pvy, 0, 0, 255, width, height, pd, 0, 0, 0, 0);
-  this.ball.draw();
-  //println(this.ball.getX());
+  this.mc = new MoveCircle(px, py, pvx, pvy, 0, 0, 255, width, height, pd);
+  this.mc.draw();
 }
 
 public void draw(){
+  background(255, 255, 255);
   translate(width/2, height/2);
-  println(this.ball.getY());
-  this.ball.draw();
-  // 衝突判定
   for(float i = 0; i < this.blk.length; i++){
-    //println(this.blk[int(i)].getX());
-    this.hit = this.blk[int(i)].hit(this.ball.getX(), this.ball.getY(), this.ball.getRx(), this.ball.getRy());
-    if(hit[0] != 99999){
-      this.ball.setRx(hit[int(0)]);
-      this.ball.setRy(hit[int(1)]);
+    if(this.blk[int(i)].getVisible()){
+      this.blk[int(i)].draw();
     }
   }
-  this.ball.move();
+  // 衝突判定
+  for(float i = 0; i < this.blk.length; i++){
+    if(this.blk[int(i)].getVisible()){
+      this.hit = this.blk[int(i)].hit(this.mc.getX(), this.mc.getY(), this.mc.getRx(), this.mc.getRy());
+      if(hit[0] != 99999){
+        this.mc.setRx(hit[int(0)]);
+        this.mc.setRy(hit[int(1)]);
+      }
+    }
+  }
+  this.mc.draw();
+  this.mc.move();
 }
