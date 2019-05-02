@@ -1,7 +1,10 @@
-// 問題 11.5 ボールとブロックの衝突判定を行いなさい．
+// 問題 11.7 ボールとブロックが衝突した時に効果音が鳴るようにせよ．
+import ddf.minim.*;
 private Block[] blk = new Block[50];
 private MoveCircle mc = null;
 private float[] hit = new float[2];
+private Minim minim;
+private AudioSnippet player;
 float px = random(-50, 50);
 float py = random(-50, 50);
 float pvx = random(-2, 2);
@@ -30,25 +33,29 @@ public void setup(){
   }
   this.mc = new MoveCircle(px, py, pvx, pvy, 0, 0, 255, width, height, pd);
   this.mc.draw();
+  minim = new Minim(this);
+  player = minim.loadSnippet("cat-cry1.mp3");
 }
 
 public void draw(){
   background(255, 255, 255);
   translate(width/2, height/2);
   for(float i = 0; i < this.blk.length; i++){
-    //if(this.blk[int(i)].getVisible()){
+    if(this.blk[int(i)].getVisible()){
       this.blk[int(i)].draw();
-    //}
+    }
   }
   // 衝突判定
   for(float i = 0; i < this.blk.length; i++){
-    //if(this.blk[int(i)].getVisible()){
+    if(this.blk[int(i)].getVisible()){
       this.hit = this.blk[int(i)].hit(this.mc.getX(), this.mc.getY(), this.mc.getRx(), this.mc.getRy());
       if(hit[0] != 99999){
+        player.rewind();
+        player.play();
         this.mc.setRx(hit[int(0)]);
         this.mc.setRy(hit[int(1)]);
       }
-    //}
+    }
   }
   this.mc.draw();
   this.mc.move();

@@ -1,4 +1,4 @@
-// 問題 11.5 ボールとブロックの衝突判定を行いなさい．
+// 問題 11.6 ボールとブロックが衝突したらブロックが消えるようにせよ
 private Block[] blk = new Block[50];
 private MoveCircle mc = null;
 private float[] hit = new float[2];
@@ -36,19 +36,19 @@ public void draw(){
   background(255, 255, 255);
   translate(width/2, height/2);
   for(float i = 0; i < this.blk.length; i++){
-    //if(this.blk[int(i)].getVisible()){
+    if(this.blk[int(i)].getVisible()){
       this.blk[int(i)].draw();
-    //}
+    }
   }
   // 衝突判定
   for(float i = 0; i < this.blk.length; i++){
-    //if(this.blk[int(i)].getVisible()){
+    if(this.blk[int(i)].getVisible()){
       this.hit = this.blk[int(i)].hit(this.mc.getX(), this.mc.getY(), this.mc.getRx(), this.mc.getRy());
       if(hit[0] != 99999){
         this.mc.setRx(hit[int(0)]);
         this.mc.setRy(hit[int(1)]);
       }
-    //}
+    }
   }
   this.mc.draw();
   this.mc.move();
