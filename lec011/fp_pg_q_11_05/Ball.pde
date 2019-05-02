@@ -49,13 +49,25 @@ class Ball {
   public float getB(){
     return this.b;
   }
+  public void setRx(float rx){
+    this.rx = rx;
+  }
+  public float getRx(){
+    return this.rx;
+  }
+  public void setRy(float ry){
+    this.ry = ry;
+  }
+  public float getRy(){
+    return this.ry;
+  }
   public float getCircumscribedCircle(){
     return this.CircumscribedCircle;
   }
   public void setP(int rP){
     this.p = rP;
   }
-  public float getP(){
+  public int getP(){
     return this.p;
   }
   public void setRotate(float protate){

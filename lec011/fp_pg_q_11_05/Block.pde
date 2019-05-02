@@ -63,39 +63,55 @@ class Block {
   }
 
   public float[] hit(float bx, float by, float tmpRx, float tmpRy){
-    float[] array = new float[4];
+    float[] array = new float[2];
     float theta = 0;
     float v = v = (sqrt(sq(tmpRx) + sq(tmpRy)));
+    boolean flg = false;
     if(this.x < bx && bx <= this.x + this.bWidth
       && y + this.bHeight / 2 <= by
       && by <= (this.bWidth/this.bHeight) * x + y && by <= -(this.bWidth/this.bHeight) * x + y) {
       if(tmpRx < 0 && 0 < tmpRy){
         theta = (180 + degrees(asin(abs(tmpRy)/v)));
+        flg = true;
       } else {
         theta = (360 - degrees(asin(abs(tmpRy)/v)));
+        flg = true;
       }
     } else if (this.x < bx && bx <= this.x + this.bWidth
       && y + this.bHeight / 2 < by && by <= y + this.bHeight
       && (this.bWidth/this.bHeight) * x + y < by  && -(this.bWidth/this.bHeight) * x + y < by) {
       if(tmpRx < 0 && tmpRy < 0){
         theta = (180 - degrees(asin(abs(tmpRy)/v)));
+        flg = true;
       } else {
         theta = (degrees(asin(abs(tmpRy)/v)));
+        flg = true;
       }
     } else if(this.y <= by && by < this.y + this.bHeight
       && -(this.bWidth/this.bHeight) * x + y <= bx && bx < (this.bWidth/this.bHeight) * x + y) {
       if(0 < tmpRx && tmpRy < 0){
         theta = (180 + degrees(acos(abs(tmpRx)/v)));
+        flg = true;
       } else {
         theta = (180 - degrees(acos(abs(tmpRx)/v)));
+        flg = true;
       }
     } else if(this.y <= by && by < this.y + this.bHeight
       && bx < -(this.bWidth/this.bHeight) * x + y  && (this.bWidth/this.bHeight) * x + y < bx) {
       if(tmpRx < 0 && tmpRy < 0){
         theta = (360 - degrees(acos(abs(tmpRx)/v)));
+        flg = true;
       } else {
         theta = degrees(acos(abs(tmpRx)/v));
+        flg = true;
       }
+    }
+    if (flg) {
+      array[0] = (v * cos(radians(theta)));
+      array[1] = (v * sin(radians(theta)));
+    } else {
+      array[0] = 99999;
+      array[1] = 99999;
     }
     return array;
   }
