@@ -8,34 +8,34 @@ class quickSort{
   }
 
   public int[] sort(){
-    return this.qsort(this.data, 0, this.len);
+    return this.qsort(this.data, 0, (this.len - 1));
   }
 
   private int[] qsort(int[] a, int left, int right){
     if (left < right) {
       int i = left;
       int j = right;
-      int pivot = mod(a[i], a[i + (j - i) / 2], a[j]); /* (i+j)/2 ではオーバーフローしてしまう */
-      //int pivot = this.len/2;
+      int c = int(random(1, (this.len - 1)));
+      int pivot = mod(a[i], a[c], a[j]);
       int tmp;
-      while (true) { /* a[] を pivot 以上と以下の集まりに分割する */
+      while (true) {
         while (a[i] < pivot) {
-          i++; /* a[i] >= pivot となる位置を検索 */
+          i++;
         }
         while (pivot < a[j]) {
-          j--; /* a[j] <= pivot となる位置を検索 */
+          j--;
         }
         if (i >= j) {
           break;
         }
         tmp = a[i];
         a[i] = a[j];
-        a[j] = tmp; /* a[i], a[j] を交換 */
+        a[j] = tmp;
         i++;
         j--;
       }
-      this.qsort(a, left, i - 1);  /* 分割した左を再帰的にソート */
-      this.qsort(a, j + 1, right); /* 分割した右を再帰的にソート */
+      this.qsort(a, left, i - 1);
+      this.qsort(a, j + 1, right);
     }
     return a;
   }
