@@ -12,11 +12,11 @@ class inSort{
     int cnt = 0;
     for(int i = 1; i < this.len; i++){
       tmp = data[i];
-      if(data[i - 1] > tmp){
+      if(data[i - 1] < tmp){
         data[i] = data[i - 1];
         data[i - 1] = tmp;
         for (int j = i; 0 < j; j--){
-          if(data[j - 1] > tmp){
+          if(data[j - 1] < tmp){
             data[j] = tmp;
             data[j] = data[j - 1];
             data[j - 1] = tmp;

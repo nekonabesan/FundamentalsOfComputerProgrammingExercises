@@ -14,7 +14,7 @@ class selectSort{
       cnt = i;
       min = this.data[i];
       for(int j = i; j < this.data.length; j++){
-        if(this.data[j] < min){
+        if(this.data[j] > min){
           min = this.data[j];
           cnt = j;
         }

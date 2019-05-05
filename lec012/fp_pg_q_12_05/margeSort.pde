@@ -39,7 +39,7 @@ class margeSort {
         array[i + j] = a[i];
       	i++;
       } else if(i < a.length) {
-        if(a[i] < b[j]){
+        if(a[i] > b[j]){
           array[i + j] = a[i];
         	i++;
         } else {
