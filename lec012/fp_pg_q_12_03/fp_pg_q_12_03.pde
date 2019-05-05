@@ -1,5 +1,6 @@
 // 問題 12.3 データ {5, 8, 1, 10, 3} を挿入整列で降順に整列せよ．
 private int[] data = {5, 8, 1, 10, 3};
+//private int[] data =  {3, 2, 0, 5, 8, 3, 4, 1, 3, 2};
 private int[] result;
 private inSort mysort = null;
 
