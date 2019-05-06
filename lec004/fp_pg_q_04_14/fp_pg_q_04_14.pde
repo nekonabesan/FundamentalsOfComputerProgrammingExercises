@@ -28,7 +28,6 @@ void flagOfGreece(){
   rect(((height/9) * 2), 0, (height/9), ((height/9) * 5));
 }
 
-// 問題 3.15 図 2.11 の仕様に示したギリシャ共和国国旗を算術演算子を用いて描画せよ．
 void draw() {
   flagOfGreece();
 }

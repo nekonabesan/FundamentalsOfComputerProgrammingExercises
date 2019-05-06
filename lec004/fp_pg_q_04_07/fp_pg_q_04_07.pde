@@ -8,7 +8,7 @@ void setup() {
 void draw() {
   int h = 20;
   int w = 50;
-  int x = 10;
+  int x = 25;
   float a = (height - 20 - (h * 5)) / 4;
   float i = a + h;
   noStroke();

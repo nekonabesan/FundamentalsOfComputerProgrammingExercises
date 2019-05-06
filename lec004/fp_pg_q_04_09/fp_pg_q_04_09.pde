@@ -7,10 +7,11 @@ void setup() {
 void draw() {
   int w = 20;
   int h = 20;
-  int x = 50;
+  float x = 50;
+  float interval = 300 / 6;
   noStroke();
   fill(0, 51, 153);
-  for(int y = 275; 25 <= y; y-=50){
+  for(float y = height - interval; interval <= y; y-=interval){
     ellipse(x, y, w, h);
   }
 }
