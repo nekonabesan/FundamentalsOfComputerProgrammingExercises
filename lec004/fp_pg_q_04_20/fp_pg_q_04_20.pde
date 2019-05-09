@@ -11,7 +11,7 @@ void draw() {
   float CircumscribedCircle = 50;
   float InscribedCircle = 40;
   int vertex = 6;
-  star(width/2, height/2, CircumscribedCircle, InscribedCircle, vertex, PI/2);
+  star(width/2, height/2, CircumscribedCircle, InscribedCircle, vertex, -PI/2);
 }
 
 //------------------------------------------------------------------//
