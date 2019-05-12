@@ -8,7 +8,10 @@ void setup() {
 void draw() {
   noStroke();
   fill(0, 0, 255);
-  star(width/2, height/2, 50, 30, 5, PI/2);
+  float CircumscribedCircle = 50;
+  float InscribedCircle = 30;
+  int vertex = 5;
+  star(width/2, height/2, CircumscribedCircle, InscribedCircle, vertex, PI/2);
 }
 
 //------------------------------------------------------------------//
