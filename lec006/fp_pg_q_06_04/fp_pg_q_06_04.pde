@@ -9,12 +9,15 @@ void setup() {
 }
 
 void draw(){
+  float x = width/2;
+  float y = height/2;
+  float r = 70;
   noFill();
   stroke(128, 128, 128);
-  ellipse(150, 150, 140, 140);
+  ellipse(x, y, 2*r, 2*r);
   noStroke();
   fill(0, 0, 255);
-  fiveStar(69, 150, 150);
+  fiveStar(int(r) - 1 , int(x), int(y));
 }
 
 void fiveStar(int r, int x, int y){
