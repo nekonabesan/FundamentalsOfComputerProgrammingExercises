@@ -9,10 +9,6 @@ void draw(){
   int r = 70;
   int x = 150;
   int y = 150;
-  noFill();
-  stroke(128, 128, 128);
-  ellipse(x, y, (r * 2), (r * 2));
-  noStroke();
   fill(0, 0, 255);
   nStar(5);
 }
