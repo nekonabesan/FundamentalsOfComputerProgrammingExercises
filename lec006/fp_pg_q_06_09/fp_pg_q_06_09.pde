@@ -6,12 +6,10 @@ void setup() {
 }
 
 void draw(){
-  int r = 70;
-  int x = 150;
-  int y = 150;
+  int n = 5;
   noStroke();
   fill(0, 0, 255);
-  nStar(5);
+  nStar(n);
 }
 
 void nStar(int n) {
