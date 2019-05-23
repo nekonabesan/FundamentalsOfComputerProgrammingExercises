@@ -16,34 +16,35 @@ void setup(){
   background(255, 255, 255);
   colorMode(HSB, (width - width/20));
   frameRate(30);
-  b = (width - width/20);
+  this.b = (width - width/20);
 }
 
 void draw(){
-  if(i <= (width - width/20)){
+  if(this.i <= (width - width/20)){
     noFill();
     stroke(h, width, b);
-    ellipse(width/2, height/2, i, i);
-    h+=1;
-    s+=1;
-    wid+=1;
-    hit+=1;
-  } else if ((width - width/20) < i) {
-    if(i%(width - width/20) == 0){
-      if(flg){
-        flg = false;
+    ellipse(width/2, height/2, this.i, this.i);
+    this.h += 1;
+    this.s += 1;
+    this.wid += 1;
+    this.hit += 1;
+  } else if ((width - width/20) < this.i) {
+    if(this.i % (width - width/20) == 0){
+      if(this.flg){
+        this.flg = false;
       } else {
-        flg = true;
+        this.flg = true;
       }
     }
-    if(flg){
-      s-=1;
+    if(this.flg){
+      this.s -= 1;
     }else{
-      s+=1;
+      this.s += 1;
     }
+    println(this.s);
     noFill();
-    stroke(h, s, b);
-    ellipse(width/2, height/2, wid, hit);
+    stroke(this.h, this.s, this.b);
+    ellipse(width/2, height/2, this.wid, this.hit);
   }
-  i++;
+  this.i += 1;
 }
