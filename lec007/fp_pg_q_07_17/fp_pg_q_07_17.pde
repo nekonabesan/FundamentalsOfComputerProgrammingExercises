@@ -50,13 +50,13 @@ void draw(){
       }
       if(this.cl[k].getFlg() == true){
         this.cl[k].setH(this.cl[k].getH() + 1);
-        this.cl[k].setS(this.cl[k].getS() + 1);
-        this.cl[k].setS(this.cl[k].getB() + 1);
+        //this.cl[k].setS(this.cl[k].getS() + 1);
+        //this.cl[k].setS(this.cl[k].getB() + 1);
         this.cl[k].setCnt(this.cl[k].getCnt() + 1);
       } else {
         this.cl[k].setH(this.cl[k].getH() - 1);
-        this.cl[k].setS(this.cl[k].getS() - 1);
-        this.cl[k].setS(this.cl[k].getB() - 1);
+        //this.cl[k].setS(this.cl[k].getS() - 1);
+        //this.cl[k].setS(this.cl[k].getB() - 1);
         this.cl[k].setCnt(this.cl[k].getCnt() - 1);
       }
     }
