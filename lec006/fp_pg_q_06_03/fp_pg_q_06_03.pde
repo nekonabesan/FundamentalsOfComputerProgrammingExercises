@@ -6,12 +6,14 @@ void setup() {
 }
 
 void draw(){
+  float x = 100;
+  float y = 200;
   noFill();
   stroke(128, 128, 128);
-  ellipse(100, 200, 100, 100);
+  ellipse(x, y, 100, 100);
   noStroke();
   fill(0, 0, 255);
-  fiveStar(100, 200);
+  fiveStar(int(x), int(y));
 }
 
 void fiveStar(int x, int y){

@@ -6,15 +6,10 @@ void setup() {
 }
 
 void draw(){
-  int r = 70;
-  int x = 150;
-  int y = 150;
-  noFill();
-  stroke(128, 128, 128);
-  ellipse(x, y, (r * 2), (r * 2));
+  int n = 5;
   noStroke();
   fill(0, 0, 255);
-  nStar(5);
+  nStar(n);
 }
 
 void nStar(int n) {

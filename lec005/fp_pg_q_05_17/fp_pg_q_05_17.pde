@@ -11,7 +11,7 @@ void draw() {
   float h = 0;
   float s = 0;
   float b = 100;
-  for(float x = w; x < (w + p) * 25; x+=(w + p)){
+  /*for(float x = w; x < (w + p) * 25; x+=(w + p)){
     s = 0;
     h += (100/25);
     for(float y = w; y < ((w + p) * 25); y+=(w + p)){
@@ -21,5 +21,21 @@ void draw() {
       fill(h, s, b);
       ellipse(x, y, w, w);
     }
+  }*/
+  float x = w;
+  float y = 0;
+  while(x < (w + p) * 25){
+    s = 0;
+    h += (100/25);
+    y = w;
+    while(y < ((w + p) * 25)){
+      // 色相 (Hue)H，彩度 (Saturation)S，明度 (Brightness)B
+      s += (100/25);
+      noStroke();
+      fill(h, s, b);
+      ellipse(x, y, w, w);
+      y+=(w + p);
+    }
+    x+=(w + p);
   }
 }

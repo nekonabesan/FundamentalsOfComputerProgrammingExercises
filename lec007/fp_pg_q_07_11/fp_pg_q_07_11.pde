@@ -13,7 +13,7 @@ void draw(){
   noStroke();
   fill(152, 251, 152);
   star(width/2, height/2, (width /4), (width / 10), 5, rad);
-  rad -= 0.00277;
+  this.rad += 0.00277;
 }
 
 //------------------------------------------------------------------//
@@ -27,7 +27,6 @@ void draw(){
 void star(float x, float y, float CircumscribedCircle, float InscribedCircle, int p, float rotatete) {
   int cnt = p * 2;
   float radius = 0;
-
   // http://www.d-improvement.jp/learning/processing/2011-a/08.html
   pushMatrix();
   translate(x, y);

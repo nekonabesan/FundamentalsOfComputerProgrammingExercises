@@ -5,11 +5,17 @@ void setup() {
 }
 
 void draw() {
-  float o = 50;
-  float i = (o / 2) * 0.75;
+  float r = 50;
+  float i = (r / 2) * 0.75;
+  // draw circle
+  strokeWeight(1.0);
+  stroke(204, 204, 204);
+  noFill();
+  ellipse(width/2, height/2, 2 * r, 2 * r);
+  // drow star
   noStroke();
   fill(0, 0, 255);
-  star(width/2, height/2, o, i, 5, PI/2);
+  star(width/2, height/2, r - 1, i, 5, PI/2);
 }
 
 //------------------------------------------------------------------//
