@@ -4,51 +4,49 @@
 import java.util.*;
 ReflectionCircle rc = null;
 MoveRectangle mr;
-private float x = 0;
+/*private float x = 0;
 private float y = 0;
 private float vx = 0;
 private float vy = 0;
 private float r = 0;
 private float g = 0;
-private float b = 0;
+private float b = 0;*/
 private float d = 20;
 private float btm = 0;
 private float prw = 40;
 private float prh = 10;
 
 void setup(){
-  size(400, 400);
+  size(300, 400);
   smooth();
   background(255, 255, 255);
   rectMode(CENTER);
   frameRate(30);
-  btm = height/2 - 30;
-  mr = new MoveRectangle(0, btm, 1, 0, 0, 0, 255, width, height, prw, prh);
+  this.btm = height/2 - 30;
+  this.mr = new MoveRectangle(0, btm, 1, 0, 0, 0, 255, width, height, prw, prh);
+  this.createRc();
 }
 
 void draw() {
   background(255, 255, 255);
   translate(width/2, height/2);
-  if(rc == null){
-    rc = createRc();
-  }
-  if(btm - 2 -d/2 <= rc.getY() && rc.getY() <= prh + btm) {
-    if(mr.getX() - prw/2 <= rc.getX() && rc.getX() <= mr.getX() + prw/2){
-      reflection();
+  /*if(this.rc == null){
+    this.rc = createRc();
+  }*/
+  if(this.btm - 2 - this.d/2 <= this.rc.getY() && this.rc.getY() <= this.prh + this.btm) {
+    if(this.mr.getX() - this.prw/2 <= this.rc.getX() && this.rc.getX() <= this.mr.getX() + this.prw/2){
+      this.reflection();
     }
   }
-  if(height/2 <= rc.getY()) {
-    rc.setX(width);
-    rc.setY(height);
-    rc.setRgb(255, 255, 255);
-    rc = createRc();
+  if(height/2 <= this.rc.getY()) {
+    this.createRc();
   }
-  rc.draw();
-  rc.move();
-  mr.draw();
+  this.rc.draw();
+  this.rc.move();
+  this.mr.draw();
   if(mousePressed){
-    rc.ctrl();
-    moveMouse(mouseX, 0);
+    this.rc.ctrl();
+    this.moveMouse(mouseX, 0);
   }
 }
 
@@ -72,41 +70,40 @@ public void reflection(){
   rcRy = (v * sin(radians(theta)));
   rcX += rcRx;
   rcY += rcRy;
-  rc.setX(rcX);
-  rc.setY(rcY);
-  rc.setRx(rcRx);
-  rc.setRy(rcRy);
+  this.rc.setX(rcX);
+  this.rc.setY(rcY);
+  this.rc.setRx(rcRx);
+  this.rc.setRy(rcRy);
 }
 
-public ReflectionCircle createRc(){
-  x = random(-width/2, width/2);
-  y = random(-height/2, 0);
-  vx = 0;
-  vy = 0;
-  r = random(0, 255);
-  g = random(0, 255);
-  b = random(0, 255);
-  d = random(10, 50);
-  rc = new ReflectionCircle(x, y, vx, vy, r, g, b, width, height, d);
-  rc.setMaxY((height/2) + d);
-  return rc;
+public void createRc(){
+  float x = random(-width/2, width/2);
+  float y = random(-height/2, 0);
+  float vx = 0;
+  float vy = 0;
+  float r = random(0, 255);
+  float g = random(0, 255);
+  float b = random(0, 255);
+  this.d = random(10, 50);
+  this.rc = new ReflectionCircle(x, y, vx, vy, r, g, b, width, height, this.d);
+  this.rc.setMaxY((height/2) + this.d);
 }
 
 public void moveMouse(float mX, float mY){
   mX-=(width/2);
-  float x = mr.getX();
-  float maxX = mr.getMaxX();
-  float minX = mr.getMinX();
-  float rx = mr.getRx();
+  float x = this.mr.getX();
+  float maxX = this.mr.getMaxX();
+  float minX = this.mr.getMinX();
+  float rx = this.mr.getRx();
   if(x < mX){
     if(x <= maxX && x < maxX) {
       x+=rx;
-      mr.setX(x);
+      this.mr.setX(x);
     }
   } else if ((mX + rx) < x && minX < x) {
     if(minX <= x){
       x-=rx;
-      mr.setX(x);
+      this.mr.setX(x);
     }
   }
 }

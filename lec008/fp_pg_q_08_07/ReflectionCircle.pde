@@ -9,8 +9,6 @@ class ReflectionCircle extends MoveCircle {
       super.setVy(random(-2, 2));
       float rx = super.getVx() * super.getSpeedRate();
       float ry = super.getVy() * super.getSpeedRate();
-      println(rx);
-      println(ry);
       super.setRx(rx);
       super.setRy(ry);
     }
