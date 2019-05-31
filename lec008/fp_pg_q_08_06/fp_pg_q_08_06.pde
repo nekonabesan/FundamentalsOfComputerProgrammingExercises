@@ -33,8 +33,6 @@ void draw() {
   }
   if(btm - 2 -d/2 <= rc.getY() && rc.getY() <= prh + btm) {
     if(mr.getX() - prw/2 <= rc.getX() && rc.getX() <= mr.getX() + prw/2){
-      println(mr.getX());
-      println(rc.getX());
       reflection();
     }
   }
