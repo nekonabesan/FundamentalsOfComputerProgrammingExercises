@@ -10,7 +10,7 @@ void setup(){
   rectMode(CENTER);
   ellipseMode(CENTER);
   frameRate(30);
-  rc = new ReflectionCircle(0, 0, 1, 1, 0, 0, 255, width, height, 40);
+  rc = new ReflectionCircle(0, 40, 1, 1, 1, 1, width, height);
 }
 
 void draw() {
