@@ -77,8 +77,8 @@ public void reflection(){
 }
 
 public void createRc(){
-  float x = random(-width/2, width/2);
-  float y = random(-height/2, 0);
+  float x = random(-width/4, width/4);
+  float y = random(-height/4, 0);
   float vx = 0;
   float vy = 0;
   float r = random(0, 255);
