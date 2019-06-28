@@ -36,9 +36,9 @@ public void draw(){
   background(255, 255, 255);
   translate(width/2, height/2);
   for(float i = 0; i < this.blk.length; i++){
-    if(this.blk[int(i)].getVisible()){
+    //if(this.blk[int(i)].getVisible()){
       this.blk[int(i)].draw();
-    }
+    //}
   }
   // 衝突判定
   for(float i = 0; i < this.blk.length; i++){
