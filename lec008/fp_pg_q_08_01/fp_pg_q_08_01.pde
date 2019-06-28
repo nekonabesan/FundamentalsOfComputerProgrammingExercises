@@ -6,7 +6,7 @@ MoveCircle c2;
 MoveCircle c3;
 MoveCircle c4;
 MoveCircle c5;
-private float[] x = {50, 100, 150, 200, 250};
+private float[] x = {50, 50, 50, 50, 50};
 private float[] y = {50, 100, 150, 200, 250};
 private float[] vx = {1, 2, 3, 4, 5};
 private float[] d = {10, 20, 30, 40, 50};

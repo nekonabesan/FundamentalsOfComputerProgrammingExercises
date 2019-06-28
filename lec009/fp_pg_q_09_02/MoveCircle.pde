@@ -21,43 +21,41 @@ class MoveCircle {
   private float g = 0;
   private float b = 0;
 
-  public void setX(float rX){
-    x = rX;
+  public void setX(float x){
+    this.x = x;
   }
   public float getX(){
-    return x;
+    return this.x;
   }
-  public void setY(float rY){
-    y = rY;
+  public void setY(float y){
+    this.y = y;
   }
   public float getY(){
-    return y;
+    return this.y;
   }
-
-  public void setVx(float rVx){
-    vx = rVx;
+  public void setVx(float vx){
+    this.vx = vx;
   }
   public float getVx(){
-    return vx;
+    return this.vx;
   }
-  public void setVy(float rVy){
-    vy = rVy;
+  public void setVy(float vy){
+    this.vy = vy;
   }
   public float getVy(){
-    return vy;
+    return this.vy;
   }
-
-  public void setRx(float rRx){
-    rx = rRx;
+  public void setRx(float rx){
+    this.rx = rx;
   }
   public float getRx(){
-    return rx;
+    return this.rx;
   }
-  public void setRy(float rRy){
-    ry = rRy;
+  public void setRy(float ry){
+    this.ry = ry;
   }
   public float getRy(){
-    return ry;
+    return this.ry;
   }
   public void setMinX(float rMinX){
     minX = rMinX;
@@ -71,98 +69,101 @@ class MoveCircle {
   public float getMaxX(){
     return maxX;
   }
-
+  public void setMinY(float minY){
+    this.minY = minY;
+  }
   public float getMinY(){
     return minY;
   }
-  public void setMaxY(float rMaxY){
-    maxY = rMaxY;
+  public void setMaxY(float maxY){
+    this.maxY = maxY;
   }
   public float getMaxY(){
     return maxY;
   }
 
-  public void setRgb(float red, float green, float blue){
-    r = red;
-    g = green;
-    b = blue;
-  }
 
-  MoveCircle(float px, float py, float pvx, float pvy, float red, float green, float blue, float pw, float ph, float pd){
-    x = px;
-    y = py;
-    vx = pvx;
-    vy = pvy;
-    r = red;
-    g = green;
-    b = blue;
-    w = pw;
-    h = ph;
-    d = pd;
-    minX = -(w/2) + d/2;
-    maxX = (w/2) - d/2;
-    minY = -(h/2) + d/2;
-    maxY = (h/2) - d/2;
-    rx = (vx * getSpeedRate());
-    ry = (vy * getSpeedRate());
+  MoveCircle(float x, float y, float vx, float vy, float r, float g, float b, float w, float h, float d){
+    this.x = x;
+    this.y = y;
+    this.vx = vx;
+    this.vy = vy;
+    this.r = r;
+    this.g = g;
+    this.b = b;
+    this.w = w;
+    this.h = h;
+    this.d = d;
+    this.minX = -(w/2) + d/2;
+    this.maxX = (w/2) - d/2;
+    this.minY = -(h/2) + d/2;
+    this.maxY = (h/2) - d/2;
+    this.rx = (this.vx * this.getSpeedRate());
+    this.ry = (this.vy * this.getSpeedRate());
     ellipseMode(CENTER);
   }
 
+  public void setRgb(float r, float g, float b){
+    this.r = r;
+    this.g = g;
+    this.b = b;
+  }
+
   public void move(){
-    if(x <= minX || maxX <= x || y <= minY || maxY <= y){
-      if(x <= minX){
-        x = minX;
-      } else if(maxX <= x) {
-        x = maxX;
+    if(this.x <= this.minX || this.maxX <= this.x || y <= this.minY || this.maxY <= this.y){
+      if(this.x <= this.minX){
+        this.x = this.minX;
+      } else if(this.maxX <= this.x) {
+        this.x = this.maxX;
       }
-      if(y <= minY) {
-        y = minY;
-      } else if(maxY <= y) {
-        y = maxY;
+      if(this.y <= this.minY) {
+        this.y = this.minY;
+      } else if(this.maxY <= this.y) {
+        this.y = this.maxY;
       }
       // 速度のx成分とy成分からスカラーを導出する処理
-      tmpRx = rx;
-      tmpRy = ry;
-      v = (sqrt(sq(rx) + sq(ry)));
-      if(x <= minX){
-        if(tmpRx < 0 && tmpRy < 0){
-          theta = (360 - degrees(acos(abs(tmpRx)/v)));
+      this.tmpRx = this.rx;
+      this.tmpRy = this.ry;
+      this.v = (sqrt(sq(this.rx) + sq(this.ry)));
+      if(this.x <= this.minX){
+        if(this.tmpRx < 0 && this.tmpRy < 0){
+          this.theta = (360 - degrees(acos(abs(this.tmpRx)/this.v)));
         } else {
-          theta = degrees(acos(abs(tmpRx)/v));
+          this.theta = degrees(acos(abs(this.tmpRx)/this.v));
         }
-      } else if(maxX <= x){
-        if(0 < tmpRx && tmpRy < 0){
-          theta = (180 + degrees(acos(abs(tmpRx)/v)));
+      } else if(this.maxX <= this.x){
+        if(0 < this.tmpRx && this.tmpRy < 0){
+          this.theta = (180 + degrees(acos(abs(this.tmpRx)/this.v)));
         } else {
-          theta = (180 - degrees(acos(abs(tmpRx)/v)));
+          this.theta = (180 - degrees(acos(abs(this.tmpRx)/this.v)));
         }
-      } else if(y <= minY) {
-        if(tmpRx < 0 && tmpRy < 0){
-          theta = (180 - degrees(asin(abs(tmpRy)/v)));
+      } else if(this.y <= this.minY) {
+        if(this.tmpRx < 0 && this.tmpRy < 0){
+          this.theta = (180 - degrees(asin(abs(this.tmpRy)/this.v)));
         } else {
-          theta = (degrees(asin(abs(tmpRy)/v)));
+          this.theta = (degrees(asin(abs(this.tmpRy)/this.v)));
         }
-      } else if(maxY <= y) {
-        if(tmpRx < 0 && 0 < tmpRy){
-          theta = (180 + degrees(asin(abs(tmpRy)/v)));
+      } else if(this.maxY <= this.y) {
+        if(this.tmpRx < 0 && 0 < this.tmpRy){
+          this.theta = (180 + degrees(asin(abs(this.tmpRy)/this.v)));
         } else {
-          theta = (360 - degrees(asin(abs(tmpRy)/v)));
+          this.theta = (360 - degrees(asin(abs(this.tmpRy)/this.v)));
         }
       }
-      rx = (v * cos(radians(theta)));
-      ry = (v * sin(radians(theta)));
+      this.rx = (this.v * cos(radians(this.theta)));
+      this.ry = (this.v * sin(radians(this.theta)));
     }
-    x += rx;
-    y += ry;
+    this.x += this.rx;
+    this.y += this.ry;
   }
 
   public void draw(){
     noStroke();
-    fill(r, g, b);
-    ellipse(x, y, d, d);
+    fill(this.r, this.g, this.b);
+    ellipse(this.x, this.y, this.d, this.d);
   }
 
   private float getSpeedRate(){
-    return random(4, 10);
+    return random(2, 5);
   }
 }

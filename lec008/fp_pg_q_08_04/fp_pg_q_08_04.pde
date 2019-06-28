@@ -15,7 +15,7 @@ void draw(){
   background(255, 255, 255);
   translate(width/2, height/2);
   mc.draw();
-  if(mousePressed){
+  if(!mousePressed){
     mc.move();
   }
 }

@@ -7,7 +7,7 @@ void setup(){
   background(255, 255, 255);
   rectMode(CENTER);
   frameRate(30);
-  mr = new MoveRectangle(0, 0, 1, 0, 0, 0, 255, width, height, 40, 40);
+  mr = new MoveRectangle(0, height/2 - 20, 1, 0, 0, 0, 255, width, height, 40, 40);
 }
 
 void draw(){
