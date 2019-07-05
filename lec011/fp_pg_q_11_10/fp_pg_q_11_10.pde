@@ -4,6 +4,8 @@ import processing.awt.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Rectangle;
+import java.awt.TextField;
 
 private Button bt = null;
 private Container ct = new Container();
@@ -638,9 +640,6 @@ class MoveRectangle {
   }
 }
 
-import java.awt.Rectangle;
-import java.awt.TextField;
-
 class Button extends Rectangle {
   private float x;
   private float y;
@@ -649,6 +648,7 @@ class Button extends Rectangle {
   private String str;
   private String textInput;
   private boolean status;
+  private TextField input = new TextField("");
 
   public boolean getStatus(){
     return this.status;
@@ -670,7 +670,8 @@ class Button extends Rectangle {
     this.setup();
   }
 
-  private void setup(){
+
+  void setup() {
   }
 
   public void clicked(String s){
@@ -679,12 +680,21 @@ class Button extends Rectangle {
   }
 
   public void draw(){
+    text("Input your name:", width/2 - 50, height/2 - 100);
+    text("Then, press mouse button", width/2 - 50, height/2 - 80);
+    text("on this windows. . .", width/2 - 50, height/2 - 60);
+
+    textFont(createFont("Harrington", 16));
+    //this.setLayout(null);
+    this.input.setBounds(20,30,160,20);
+    //this.input.add(input);
+
     stroke(0);
     fill(255, 255, 255);
     rect(this.x, this.y, this.w, this.h);
     fill(0);
     textAlign(CENTER);
     text(this.str, this.x, this.y + this.h / 2);
-    noStroke();
+    //noStroke();
   }
 }
