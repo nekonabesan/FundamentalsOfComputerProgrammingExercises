@@ -1,15 +1,14 @@
 // 問題 11.10 ブロック崩しを行ったユーザ名，点数，日時をファイルに追記せよ．
 import ddf.minim.*;
 import processing.awt.*;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.Rectangle;
-import java.awt.TextField;
+import java.awt.*;
+//import java.awt.event.*;
+//import java.awt.Rectangle;
+//import java.awt.TextField;
 
 private Button bt = null;
 private Container ct = new Container();
-private TextField input = new TextField("AA");
 private Block[] blk = new Block[50];
 private MoveCircle mc = null;
 private float[] hit = new float[2];
@@ -56,12 +55,11 @@ public void setup(){
   }
   this.btm = height/2 - 30;
   this.mr = new MoveRectangle(0, btm, 1, 0, 0, 0, 255, width, height, prw, prh);
-  minim = new Minim(this);
-  player = minim.loadSnippet("cat-cry1.mp3");
+  this.minim = new Minim(this);
+  this.player = minim.loadSnippet("cat-cry1.mp3");
   this.initializedText();
   this.write();
-  this.bt = new Button("save", btX, btY, btW, btH);
-  this.input.setBounds(0, -50, 200, 20);
+  this.bt = new Button("save", this.btX, this.btY, this.btW, this.btH);
 }
 
 public void draw(){
@@ -88,8 +86,8 @@ public void draw(){
       if(this.blk[int(i)].getVisible()){
         this.hit = this.blk[int(i)].hit(this.mc.getX(), this.mc.getY(), this.mc.getRx(), this.mc.getRy());
         if(hit[0] != 99999){
-          player.rewind();
-          player.play();
+          this.player.rewind();
+          this.player.play();
           this.mc.setRx(hit[int(0)]);
           this.mc.setRy(hit[int(1)]);
           this.point+=(abs(mc.getRx()) + abs(mc.getRy()));
@@ -101,7 +99,7 @@ public void draw(){
       this.mc.setX(width);
       this.mc.setY(height);
       this.mc.setRgb(255, 255, 255);
-      createMc();
+      this.createMc();
     }
     this.initializedText();
     this.mc.draw();
@@ -113,10 +111,11 @@ public void draw(){
   } else {
     this.bt.draw();
     if(mousePressed){
-      if(btX - btW/2 <= mouseX - width/2  && mouseX - width/2 <= btX + btW/2
-        && btY - btH/2 <= mouseY - height/2 && mouseY - height/2 <=btY + btH/2){
-        this.name = this.input.getText();
-        inputFlg = true;
+      if(this.btX - this.btW/2 <= mouseX - width/2  && mouseX - width/2 <= this.btX + this.btW/2
+        && this.btY - this.btH/2 <= mouseY - height/2 && mouseY - height/2 <=this.btY + this.btH/2){
+        this.name = this.bt.getTextInput();
+        this.bt.destField();
+        this.inputFlg = true;
       }
     }
   }
@@ -395,28 +394,28 @@ class MoveCircle {
     return this.ry;
   }
   public void setMinX(float rMinX){
-    minX = rMinX;
+    this.minX = rMinX;
   }
   public float getMinX(){
-    return minX;
+    return this.minX;
   }
   public void setMaxX(float rMaxX){
-    maxX = rMaxX;
+    this.maxX = rMaxX;
   }
   public float getMaxX(){
-    return maxX;
+    return this.maxX;
   }
   public void setMinY(float minY){
     this.minY = minY;
   }
   public float getMinY(){
-    return minY;
+    return this.minY;
   }
   public void setMaxY(float maxY){
     this.maxY = maxY;
   }
   public float getMaxY(){
-    return maxY;
+    return this.maxY;
   }
 
 
@@ -647,12 +646,10 @@ class Button extends Rectangle {
   private float h = 20;
   private String str;
   private String textInput;
-  private boolean status;
-  private TextField input = new TextField("");
+  private JLayeredPane pane;
+  private JTextField field;
+  private Canvas canvas = (Canvas) surface.getNative();
 
-  public boolean getStatus(){
-    return this.status;
-  }
   public String getTextInput(){
     return this.textInput;
   }
@@ -665,36 +662,32 @@ class Button extends Rectangle {
     this.y = y;
     this.w = w;
     this.h = h;
-    this.status = false;
     this.setRect(this.x, this.y, this.w, this.h);
     this.setup();
   }
 
-
   void setup() {
-  }
-
-  public void clicked(String s){
-    this.status = true;
-    this.textInput = new String(s);
+    this.pane = (JLayeredPane) canvas.getParent().getParent();
+    this.field = new JTextField("Your Name");
+    this.field.setBounds(int(this.x) + 75, int(this.y) + 190, 150, 30);
+    this.pane.add(field);
   }
 
   public void draw(){
-    text("Input your name:", width/2 - 50, height/2 - 100);
-    text("Then, press mouse button", width/2 - 50, height/2 - 80);
-    text("on this windows. . .", width/2 - 50, height/2 - 60);
-
+    this.textInput = new String(this.field.getText());
     textFont(createFont("Harrington", 16));
-    //this.setLayout(null);
-    this.input.setBounds(20,30,160,20);
-    //this.input.add(input);
-
+    text("Input your name:", width/2 - 50, height/2 - 120);
+    text("Then, press mouse button", width/2 - 50, height/2 - 100);
+    text("on this windows. . .", width/2 - 50, height/2 - 80);
     stroke(0);
     fill(255, 255, 255);
     rect(this.x, this.y, this.w, this.h);
     fill(0);
     textAlign(CENTER);
     text(this.str, this.x, this.y + this.h / 2);
-    //noStroke();
+  }
+
+  public void destField(){
+    this.pane.remove(field);
   }
 }
