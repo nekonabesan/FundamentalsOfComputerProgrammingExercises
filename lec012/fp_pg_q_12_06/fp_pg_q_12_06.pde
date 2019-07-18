@@ -13,8 +13,11 @@ private babbleSort babbleSort = null;
 private inSort inSort = null;
 private quickSort quickSort = null;
 private margeSort margeSort = null;
+private String[] name = {"SELECTION", "BUBBLE", "INSERTION", "QUICK", "MERGE"};
+private String resultScore;
 
 public void setup(){
+  noLoop();
   size(400, 200);
   prontLap(10000);
   prontLap(20000);
@@ -27,13 +30,38 @@ public void setup(){
   prontLap(90000);
 }
 
+void draw(){
+  this.write();
+}
+
 private void prontLap(int dataLen){
+  int score = 0;
   this.data = createArray(dataLen);
-  println("insertion(" + dataLen + ") : " + nf(this.measureLap(INSERTION, this.data)));
-  println("selection(" + dataLen + ") : " + nf(this.measureLap(SELECTION, this.data)));
-  println("bubble   (" + dataLen + ") : " + nf(this.measureLap(BUBBLE, this.data)));
-  println("quick    (" + dataLen + ") : " + nf(this.measureLap(QUICK, this.data)));
-  println("merge    (" + dataLen + ") : " + nf(this.measureLap(MERGE, this.data)));
+  // INSERTION
+  score = this.measureLap(INSERTION, this.data);
+  println("insertion(" + dataLen + ") : " + nf(score));
+  resultScore += this.name[INSERTION] + "\t(" + dataLen + ")" + "\t" + str(score) + "\n";
+  //this.write(INSERTION, dataLen, score);
+  // SELECTION
+  score = this.measureLap(SELECTION, this.data);
+  println("selection(" + dataLen + ") : " + nf(score));
+  resultScore += this.name[SELECTION] + "\t(" + dataLen + ")" + "\t" + str(score) + "\n";
+  //this.write(SELECTION, dataLen, score);
+  // BUBBLE
+  score = this.measureLap(BUBBLE, this.data);
+  println("bubble   (" + dataLen + ") : " + nf(score));
+  resultScore += this.name[BUBBLE] + "\t(" + dataLen + ")" + "\t" + str(score) + "\n";
+  //this.write(BUBBLE, dataLen, score);
+  // QUICK
+  score = this.measureLap(QUICK, this.data);
+  println("quick    (" + dataLen + ") : " + nf(score));
+  resultScore += this.name[QUICK] + "\t(" + dataLen + ")" + "\t" + str(score) + "\n";
+  //this.write(QUICK, dataLen, score);
+  // MERGE
+  score = this.measureLap(MERGE, this.data);
+  println("merge    (" + dataLen + ") : " + nf(score));
+  resultScore += this.name[MERGE] + "\t(" + dataLen + ")" + "\t" + str(score) + "\n";
+  //this.write(MERGE, dataLen, score);
 }
 
 private int measureLap(int s, int[] data){
@@ -74,6 +102,14 @@ private int[] createArray(int max){
     result[i] = int(random(0, max));
   }
   return result;
+}
+
+private void write(){
+  //String s = this.bt.getTextInput() + str(year()) + nf(month(), 2) + nf(day(), 2) + nf(hour(), 2) + nf(minute(), 2) + nf(second(), 2);
+  PrintWriter output = createWriter("sort_" + str(year()) + nf(month(), 2) + nf(day(), 2) + nf(hour(), 2) + nf(minute(), 2) + nf(second()) + ".txt");
+  output.println(this.resultScore);
+  output.flush();
+  output.close();
 }
 
 class babbleSort{
