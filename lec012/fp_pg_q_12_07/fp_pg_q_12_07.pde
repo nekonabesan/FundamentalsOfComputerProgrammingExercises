@@ -17,6 +17,9 @@ private babbleSort babbleSort = null;
 private inSort inSort = null;
 private quickSort quickSort = null;
 private margeSort margeSort = null;
+private String[] name = {"SELECTION", "BUBBLE", "INSERTION", "QUICK", "MERGE"};
+private String resultScore;
+private int totalScore = 0;
 
 public void setup(){
   int isort = 0;
@@ -24,6 +27,7 @@ public void setup(){
   int bsort = 0;
   int qsort = 0;
   int msort = 0;
+  noLoop();
   size(400, 200);
   for (int i = 0; i < 20; i++) {
     this.data = createArray(50000);
@@ -41,10 +45,26 @@ public void setup(){
     msort += this.merge[i];
   }
   println("insertion : " + nf(isort/20));
+  resultScore += this.name[INSERTION] + ": " + str(isort/20) + " ms\n";
   println("selection : " + nf(ssort/20));
+  resultScore += this.name[SELECTION] + ": " + str(ssort/20) + " ms\n";
   println("bubble    : " + nf(bsort/20));
+  resultScore += this.name[BUBBLE] + ": " + str(bsort/20) + " ms\n";
   println("quick     : " + nf(qsort/20));
+  resultScore += this.name[QUICK] + ": " + str(qsort/20) + " ms\n";
   println("merge     : " + nf(msort/20));
+  resultScore += this.name[MERGE] + ": " + str(msort/20) + " ms\n";
+}
+
+void draw(){
+  this.write();
+}
+
+private void write(){
+  PrintWriter output = createWriter("average_" + str(year()) + nf(month(), 2) + nf(day(), 2) + nf(hour(), 2) + nf(minute(), 2) + nf(second()) + ".txt");
+  output.println(this.resultScore);
+  output.flush();
+  output.close();
 }
 
 private int measureLap(int s, int[] data){
