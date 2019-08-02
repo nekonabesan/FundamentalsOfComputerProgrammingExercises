@@ -3,9 +3,6 @@ import ddf.minim.*;
 import processing.awt.*;
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.*;
-//import java.awt.Rectangle;
-//import java.awt.TextField;
 
 private Button bt = null;
 private Container ct = new Container();
