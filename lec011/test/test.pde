@@ -1,93 +1,72 @@
 import java.awt.TextField;
 import java.awt.Rectangle;
-import java.awt.Container;
-import processing.awt.*;
+import javax.swing.JPanel;
+import processing.awt.PSurfaceAWT;
 
-Container ct = new Container();
-Button but;
-TextField input = new TextField("AA");
+
+private But but = null;
+private TextField input = new TextField("");
+private JPanel panel = new JPanel();
 
 void setup() {
-  size(400,200);
+  size(300,100);
   textFont(createFont("Harrington", 16));
-  ct.setLayout(null);
-  input.setBounds(0,0,150,20);
-  ct.add(input);
-  but = new Button("save", 200, 50);
+  this.panel.setLayout(null);
+  this.input.setBounds(30,50,150,20);
+  this.panel.add(input);
+  this.but = new But("save", 200, 50);
 }
 
-void mouseClicked(){ but.clicked(input.getText()); }
+void mouseClicked(){
+  this.but.clicked(input.getText());
+}
 
 void draw() {
   background(255);
-  but.draw();
+  this.but.draw();
   textAlign(LEFT);
   text("Input␣your␣name␣and␣click␣save␣button!!", 10, 30);
-  if(but.getStatus()) text(but.getTextInput(), 10, 90);
+  if(this.but.getStatus()) text(this.but.getTextInput(), 10, 90);
 }
 
-//SwingInProcessing_Button_Listener
+class But extends Rectangle {
+  private String str, textInput;
+  private boolean status;
 
-/*import processing.awt.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-void setup(){
-  size(640, 480);
-  Canvas canvas = (Canvas)surface.getNative();
-    JLayeredPane layeredPane = (JLayeredPane)canvas.getParent().getParent();
-
-  JTextField textField = new JTextField("New Text Field");
-  textField.setBounds(10, 360, 620, 20);
-
-  // Generate Object Instance of Inner Class for ActionListener
-  // ActionListenerインタフェースを実装するインナークラス(後述)の
-  // オブジェクトインスタンスの生成
-  MyButtonListener myButtonListener = new MyButtonListener();
-
-  // インナークラスに作ったTextField登録関数を使って，TextFieldを登録
-  myButtonListener.setTextField(textField);
-
-  // ボタンを作って，場所とサイズを決める
-  JButton button1 = new JButton("Button 1");
-  button1.setBounds(10, 390, 100, 20);
-
-  // このボタンの「アクションコマンド」文字列を指定する．
-  // ここでは"button1_push"という文字列を指定している
-  button1.setActionCommand("button1_push");
-  //ボタンを，ActionListenerを実装したクラスのオブジェクトに登録する
-  button1.addActionListener(myButtonListener);
-
-  // Paneにテキストフィールドとボタンを追加
-  layeredPane.add(textField);
-  layeredPane.add(button1);
-}
-
-void draw(){
-  ellipse(0,0,100,100);
-}
-
-// Inner Class for ActionListener
-// ActionListenerを使うためのインナークラス
-class MyButtonListener implements ActionListener {
-
-  // Pointer of textField added JLayeredPane
-  // スケッチの大元のTextFieldへの参照ポインタ変数
-  JTextField textField;
-
-  // その参照をsetup関数から登録するための登録関数
-  void setTextField(JTextField textField){
-    this.textField = textField;
+  But(String s, int x, int y){
+    str = new String(s);
+    width = (int)(textWidth(str)) + 8;
+    height = (int)(textAscent()) + 8;
+    this.x = x; this.y = y;
+    status = false; // just for sample program.
+    setRect(this.x, this.y, width, height);
   }
 
-  //ActionListenerを使うための関数actionPerformed関数のオーバーライド
-  @Override
-  public void actionPerformed(ActionEvent e){
-   String actionCommand = e.getActionCommand();
-   if(actionCommand.equals("button1_push")){
-    textField.setText("Button1 has been pushed");
-   }
+  public boolean getStatus(){
+    return status;
   }
 
-}*/
+  public String getTextInput(){
+    return textInput;
+  }
+
+  public boolean clicked(String s){
+    if(contains(mouseX, mouseY)){
+      status = true; // just for sample program.
+      textInput = new String(s);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public void draw(){
+    stroke(0);
+    fill(255);
+    rect(x, y, width, height);
+    fill(0);
+    textAlign(CENTER);
+    text(str, x + width / 2, y + height / 2 + 4);
+    noStroke();
+  }
+}
